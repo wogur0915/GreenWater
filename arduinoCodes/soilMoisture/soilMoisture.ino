@@ -2,23 +2,13 @@
 BluetoothSerial SerialBT;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   SerialBT.begin("ESP32"); // 표시될 블루투스 이름
 
 }
 
 void loop() {
-
-  
-  // put your main code here, to run repeatedly:  
   int soilMoisture = analogRead(A0);
-
-
-  Serial.print("Soil Moisture : "); // 시리얼 모니터에 'OOO' 표시
-        Serial.println(soilMoisture);
-  delay(1000);
-
 
   if (Serial.available()) { // 블루투스 값을 읽어들이기
     SerialBT.write(Serial.read());
@@ -36,9 +26,10 @@ void loop() {
     }
   }
   
-  
+ /* 
  Serial.print("Soil Moisture : ");
-  Serial.print(soilMoisture);
+ Serial.print(soilMoisture);
  Serial.print("\n");  
  delay(1000);
+ */ // 시리얼 모니터 출력부분 임시 주석처리
 }
