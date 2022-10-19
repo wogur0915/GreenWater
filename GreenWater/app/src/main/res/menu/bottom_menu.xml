@@ -5,4 +5,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_plantlist_24"
         android:title="식물목록"/>
+
+    <item
+        android:id="@+id/action_watertingplant"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_wateringplant_24"
+        android:title="식물 토양습도 모니터"/>
 </menu>
