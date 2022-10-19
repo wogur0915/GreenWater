@@ -11,4 +11,11 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_wateringplant_24"
         android:title="식물 토양습도 모니터"/>
+
+    <item
+        android:id="@+id/action_managementbook"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_management_book_24"
+        android:title="식물 관리법"/>
+
 </menu>
