@@ -2,6 +2,7 @@ package com.root.greenwater;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
         bottomNavigationView = findViewById(R.id.bottomNavi);  // 하단바 연결
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {  // 하단바 아이템 선택 리스너
