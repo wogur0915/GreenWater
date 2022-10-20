@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/drawable/ic_baseline_management_book_24.xml" value="0.1" />
+        <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/drawable/ic_baseline_plantlist_24.xml" value="0.1265" />
+        <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/drawable/ic_baseline_wateringplant_24.xml" value="0.1265" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/drawable/ic_baseline_whatshot_24.xml" value="0.1265" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/managementBook.xml" value="0.25364583333333335" />
+        <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/management_book.xml" value="0.18802083333333333" />
+        <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/managementbook.xml" value="0.18802083333333333" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/plantlist.xml" value="0.2526041666666667" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/settings.xml" value="0.25364583333333335" />
         <entry key="..\:/Program Files/Android/GreenWater/GreenWater/app/src/main/res/layout/wateringplant.xml" value="0.25364583333333335" />

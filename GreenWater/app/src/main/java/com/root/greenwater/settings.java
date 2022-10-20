@@ -16,7 +16,7 @@ public class settings extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.wateringplant, container, false);
+        view = inflater.inflate(R.layout.settings, container, false);
 
         return view;
     }
