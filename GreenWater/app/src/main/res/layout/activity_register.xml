@@ -23,14 +23,27 @@
         android:id="@+id/et_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_email"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_email"
         app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:hint="닉네임을 입력하세요."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_pwd"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="@+id/et_pwd"
+        app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
 
     <Button
         android:id="@+id/btn_register"
@@ -38,11 +51,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/black"
-        android:textStyle="bold"
         android:text="가입 완료"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/et_pwd"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/et_pwd"
-        app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
