@@ -16,7 +16,7 @@ public class wateringplant extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.plantlist, container, false);
+        view = inflater.inflate(R.layout.wateringplant, container, false);
 
         return view;
     }
