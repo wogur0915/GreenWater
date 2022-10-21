@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.292" />
 
     <TextView
-        android:id="@+id/et_humid2"
+        android:id="@+id/tv_percent"
         android:layout_width="21dp"
         android:layout_height="25dp"
         android:text="%"
@@ -62,21 +62,26 @@
         android:id="@+id/et_humid"
         android:layout_width="132dp"
         android:layout_height="40dp"
-        android:layout_marginStart="80dp"
         android:ems="10"
         android:hint="enter humind"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.297"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintVertical_bias="0.781" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_adjust"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="적용"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="540dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/et_humid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
