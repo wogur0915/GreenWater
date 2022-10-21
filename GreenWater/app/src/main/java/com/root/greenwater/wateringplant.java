@@ -38,19 +38,14 @@ public class wateringplant extends Fragment {
             @Override
             public void onClick(View view) {
                 tv_humid.setText((et_humid.getText()));
-
+                if (Integer.parseInt(tv_humid.getText().toString()) < 40)
+                    tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+                else if (Integer.parseInt(tv_humid.getText().toString()) > 90)
+                    tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
+                else tv_status.setText("화분의 습도가 적당합니다.");
             }
         });
 
-        if (Integer.parseInt(tv_humid.getText().toString()) < 40) {
-            tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
-        }
-        else if (Integer.parseInt(tv_humid.getText().toString()) > 90) {
-            tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
-        }
-        else {
-            tv_status.setText("화분의 습도가 적당합니다.");
-        }
 
         return view;
     }
