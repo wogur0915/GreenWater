@@ -33,16 +33,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {  // 하단바 아이템 아이디로 분기
-                    case R.id.action_plantlist:
+                    case R.id.action_setting:
                             setFrag(0);
                         break;
                     case R.id.action_watertingplant:
                         setFrag(1);
                         break;
-                    case R.id.action_managementbook:
+                    case R.id.action_plantlist:
                         setFrag(2);
                         break;
-                    case R.id.action_setting:
+                    case R.id.action_managementbook:
                         setFrag(3);
                         break;
                 }
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         ft = fm.beginTransaction();
         switch (n) {
             case 0:
-                ft.replace(R.id.mainFrame, plantlist);
+                ft.replace(R.id.mainFrame, settings);
                 ft.commit();
                 break;
             case 1:
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 break;
             case 2:
-                ft.replace(R.id.mainFrame, managementbook);
+                ft.replace(R.id.mainFrame, plantlist);
                 ft.commit();
                 break;
             case 3:
-                ft.replace(R.id.mainFrame, settings);
+                ft.replace(R.id.mainFrame, managementbook);
                 ft.commit();
                 break;
         }

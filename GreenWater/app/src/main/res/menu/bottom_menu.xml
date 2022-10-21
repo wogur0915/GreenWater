@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_plantlist"
+        android:id="@+id/action_setting"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_plantlist_24"
-        android:title="식물 목록"/>
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="설정"/>
 
     <item
         android:id="@+id/action_watertingplant"
@@ -13,14 +13,14 @@
         android:title="식물 모니터"/>
 
     <item
+        android:id="@+id/action_plantlist"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_plantlist_24"
+        android:title="식물 관리"/>
+
+    <item
         android:id="@+id/action_managementbook"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_management_book_24"
         android:title="식물 관리법"/>
-
-    <item
-        android:id="@+id/action_setting"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="설정"/>
 </menu>
