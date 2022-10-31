@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "991261505727",
+    "project_id": "greenwater-5c393",
+    "storage_bucket": "greenwater-5c393.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991261505727:android:865518afe9d972511fee0a",
+        "android_client_info": {
+          "package_name": "com.root.greenwater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991261505727-hterab7ao5diai95g8cukmge2lb57a20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfpGyYAKtof0vHsm72NganWMeWyk0ITqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991261505727-hterab7ao5diai95g8cukmge2lb57a20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
