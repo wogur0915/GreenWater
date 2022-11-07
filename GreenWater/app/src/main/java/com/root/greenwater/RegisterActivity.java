@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 실시간 데이터베이스
-    private EditText mEtEmail, mEtPwd; // 회원가입 입력필드
+    private EditText mEtEmail, mEtPwd, mEtNickname; // 회원가입 입력필드
     private Button mBtnRegister; // 회원가입 버튼
 
     @Override
@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mEtEmail = findViewById(R.id.et_email);
         mEtPwd = findViewById(R.id.et_pwd);
+        mEtNickname = findViewById(R.id.et_nickname);
         mBtnRegister = findViewById(R.id.btn_register);
 
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
                 // 회원가입 처리 시작
                 String strEmail = mEtEmail.getText().toString();
                 String strPwd = mEtPwd.getText().toString();
+                String strNickname = mEtNickname.getText().toString();
 
                 // Firebase Auth 진행
                 mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
@@ -55,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                             account.setIdToken(firebaseUser.getUid());
                             account.setEmailId(firebaseUser.getEmail());
                             account.setPassword(strPwd);
+                            account.setNickname(strNickname);
 
                             mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
