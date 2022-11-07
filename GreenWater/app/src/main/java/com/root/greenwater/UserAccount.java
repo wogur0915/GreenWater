@@ -5,10 +5,15 @@ package com.root.greenwater;
  */
 
 public class UserAccount {
-    private String emailId;
-    private String password;
+    private String idToken; // Firebase Uid (고유 토큰)
+    private String emailId; // 이메일 아이디
+    private String password; // 비밀번호
 
     public UserAccount() { }
+
+    public String getIdToken() { return idToken; }
+
+    public void setIdToken(String idToken) { this.idToken = idToken; }
 
     public String getEmailId() { return emailId; }
 
