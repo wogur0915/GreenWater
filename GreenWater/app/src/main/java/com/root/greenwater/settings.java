@@ -25,6 +25,8 @@ public class settings extends Fragment {
         view = inflater.inflate(R.layout.settings, container, false);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
         Button btn_logout = view.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,7 @@ public class settings extends Fragment {
                 // 로그아웃 하기
                 mFirebaseAuth.signOut();
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
+                requireActivity().finish();
                 startActivity(intent);
             }
         });
