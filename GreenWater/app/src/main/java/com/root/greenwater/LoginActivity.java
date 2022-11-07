@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();   // 현재 액티비티 파괴
                         }
                         else {
+                            // 로그인 실패 했을 때
                             Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
