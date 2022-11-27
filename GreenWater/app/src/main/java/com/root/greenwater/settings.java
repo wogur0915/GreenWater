@@ -126,7 +126,7 @@ public class settings extends Fragment {
     }
     private void bluetoothOff(View view){
         mBTAdapter.disable(); // turn off
-        Toast.makeText(getApplicationContext(),"Bluetooth turned Off", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(),"블루투스를 껐습니다.", Toast.LENGTH_SHORT).show();
     }
 
 
