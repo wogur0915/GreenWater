@@ -3,7 +3,10 @@ package com.root.greenwater;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -90,12 +93,12 @@ public class settings extends Fragment {
 //                }
 //            });
 //
-//            mDiscoverBtn.setOnClickListener(new View.OnClickListener(){
-//                @Override
-//                public void onClick(View v){
-//                    discover(v);
-//                }
-//            });
+            mDiscoverBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    discover(v);
+                }
+            });
         }
 
         // 로그아웃 버튼 액션
@@ -113,7 +116,7 @@ public class settings extends Fragment {
 
         return view;
     }
-
+    // 블루투스 켜기
     private void bluetoothOn(View view){
         if (!mBTAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -124,10 +127,30 @@ public class settings extends Fragment {
             Toast.makeText(requireContext(),"블루투스가 이미 켜져 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
+    // 블루투스 끄기
     private void bluetoothOff(View view){
         mBTAdapter.disable(); // turn off
         Toast.makeText(requireContext(),"블루투스를 껐습니다.", Toast.LENGTH_SHORT).show();
     }
 
+    // 블루투스 페어링
+    private void discover(View view){
+        // Check if the device is already discovering
+        if(mBTAdapter.isDiscovering()){
+            mBTAdapter.cancelDiscovery();
+            Toast.makeText(requireContext(),"Discovery stopped",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            if(mBTAdapter.isEnabled()) {
+                mBTArrayAdapter.clear(); // clear items
+                mBTAdapter.startDiscovery();
+                Toast.makeText(requireContext(), "Discovery started", Toast.LENGTH_SHORT).show();
+                requireActivity().registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+            }
+            else{
+                Toast.makeText(requireContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 }
