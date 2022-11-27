@@ -120,11 +120,11 @@ public class settings extends Fragment {
         if (!mBTAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            Toast.makeText(requireContext(),"Bluetooth turned on",Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),"블루투스를 켭니다.",Toast.LENGTH_SHORT).show();
 
         }
         else{
-            Toast.makeText(requireContext(),"Bluetooth is already on", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),"블루투스가 이미 켜져 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
