@@ -144,13 +144,25 @@ public class settings extends Fragment {
             if(mBTAdapter.isEnabled()) {
                 mBTArrayAdapter.clear(); // clear items
                 mBTAdapter.startDiscovery();
-                Toast.makeText(requireContext(), "Discovery started", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "기기 검색을 시작합니다.", Toast.LENGTH_SHORT).show();
                 requireActivity().registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
             }
             else{
-                Toast.makeText(requireContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "블루투스가 켜져있지 않습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }
+    final BroadcastReceiver blReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(BluetoothDevice.ACTION_FOUND.equals(action)){
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // add the name to the list
+                mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+                mBTArrayAdapter.notifyDataSetChanged();
+            }
+        }
+    };
 
 }
