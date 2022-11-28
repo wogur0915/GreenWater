@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="175dp"
+            android:layout_height="212dp"
             android:orientation="horizontal">
 
             <Button
@@ -26,32 +26,13 @@
                 android:layout_height="46dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="56dp"
                 android:layout_toStartOf="@+id/btnBluetooth_off"
                 android:text="블루투스 켜기"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnBluetooth_off"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/btnBluetooth_off"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_alignBottom="@+id/btnBluetooth_on"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                android:text="블루투스 끄기"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnBluetooth_on"
-                app:layout_constraintHorizontal_bias="0.761"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_pairedList"
@@ -63,6 +44,7 @@
                 android:text="페어링 기기 목록 보기"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/btnBluetooth_off"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnBluetooth_off" />
 
@@ -75,9 +57,24 @@
                 android:text="새로운 기기 찾기"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/btnBluetooth_on"
                 app:layout_constraintTop_toBottomOf="@+id/btnBluetooth_on" />
+
+            <Button
+                android:id="@+id/btnBluetooth_off"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_alignBottom="@+id/btnBluetooth_on"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="8dp"
+                android:text="블루투스 끄기"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/btnBluetooth_on"
+                app:layout_constraintHorizontal_bias="0.761"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_alertOff"
@@ -117,6 +114,21 @@
                 app:layout_constraintStart_toEndOf="@+id/btn_logout"
                 app:layout_constraintTop_toBottomOf="@+id/btn_discover"
                 app:layout_constraintVertical_bias="0.865" />
+
+            <TextView
+                android:id="@+id/bluetoothStatus"
+                android:layout_width="173dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:text="블루투스 연결 상태"
+                android:textAlignment="center"
+                android:textColor="#0D33F4"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
