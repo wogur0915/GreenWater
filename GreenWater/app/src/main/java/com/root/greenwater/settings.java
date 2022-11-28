@@ -86,7 +86,7 @@ public class settings extends Fragment {
         };
 
         if (mBTArrayAdapter == null) {
-            Toast.makeText(requireContext(),"Bluetooth device not found!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),"블루투스 기기를 찾지 못했습니다.",Toast.LENGTH_SHORT).show();
         }
         else {
             mBtnBluetoothOn.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +100,14 @@ public class settings extends Fragment {
                 @Override
                 public void onClick(View v) { bluetoothOff(v); }
             });
-//
-//            mListPairedDevicesBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v){
-//                    listPairedDevices(v);
-//                }
-//            });
-//
+
+            mListPairedDevicesBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v){
+                    listPairedDevices(v);
+                }
+            });
+
             mDiscoverBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -148,12 +148,12 @@ public class settings extends Fragment {
         Toast.makeText(requireContext(),"블루투스를 껐습니다.", Toast.LENGTH_SHORT).show();
     }
 
-    // 블루투스 페어링
+    // 블루투스 검색
     private void discover(View view){
         // Check if the device is already discovering
         if(mBTAdapter.isDiscovering()){
             mBTAdapter.cancelDiscovery();
-            Toast.makeText(requireContext(),"Discovery stopped",Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),"기기 검색을 중단했습니다.",Toast.LENGTH_SHORT).show();
         }
         else{
             if(mBTAdapter.isEnabled()) {
@@ -167,6 +167,23 @@ public class settings extends Fragment {
             }
         }
     }
+
+    // 페어링 기기 목록 불러오기
+    private void listPairedDevices(View view){
+        mPairedDevices = mBTAdapter.getBondedDevices();
+        if(mBTAdapter.isEnabled()) {
+            // put it's one to the adapter
+            mBTArrayAdapter.clear(); // clear items
+            for (BluetoothDevice device : mPairedDevices)
+                mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+
+            Toast.makeText(requireContext(), "페어링 된 기기 목록을 불러왔습니다.", Toast.LENGTH_SHORT).show();
+        }
+        else
+            Toast.makeText(requireContext(), "블루투스가 켜져 있지 않습니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    // 블루투스 어댑터 정보를 가져오기
     final BroadcastReceiver blReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
