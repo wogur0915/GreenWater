@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 import java.util.UUID;
 
@@ -35,6 +38,7 @@ public class settings extends Fragment {
     private Button mBtnBluetoothOff;
     private Button mListPairedDevicesBtn;
     private Button mDiscoverBtn;
+    private TextView mBluetoothStatus;
     private ListView mDevicesListView;
     private BluetoothAdapter mBTAdapter;
     private Set<BluetoothDevice> mPairedDevices;
@@ -69,6 +73,17 @@ public class settings extends Fragment {
         mDevicesListView = view.findViewById(R.id.devicesListView);
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
 //        mDevicesListView.setOnItemClickListener(mDeviceClickListener);
+
+        mHandler = new Handler(){
+            public void handleMessage(Message msg){
+                if(msg.what == CONNECTING_STATUS){
+                    if(msg.arg1 == 1)
+                        mBluetoothStatus.setText("연결된 장치 : " + (String)(msg.obj));
+                    else
+                        mBluetoothStatus.setText("연결 실패");
+                }
+            }
+        };
 
         if (mBTArrayAdapter == null) {
             Toast.makeText(requireContext(),"Bluetooth device not found!",Toast.LENGTH_SHORT).show();
