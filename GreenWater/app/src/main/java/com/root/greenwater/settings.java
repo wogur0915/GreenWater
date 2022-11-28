@@ -14,6 +14,7 @@ import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -77,7 +78,7 @@ public class settings extends Fragment {
 
         mDevicesListView = view.findViewById(R.id.devicesListView);
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
-//        mDevicesListView.setOnItemClickListener(mDeviceClickListener);
+        mDevicesListView.setOnItemClickListener(mDeviceClickListener);
 
         mHandler = new Handler(){
             public void handleMessage(Message msg){
@@ -206,6 +207,60 @@ public class settings extends Fragment {
                 mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
                 mBTArrayAdapter.notifyDataSetChanged();
             }
+        }
+    };
+
+    private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
+
+            if(!mBTAdapter.isEnabled()) {
+                Toast.makeText(getActivity().getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mBluetoothStatus.setText("연결중...");
+            // Get the device MAC address, which is the last 17 chars in the View
+            String info = ((TextView) v).getText().toString();
+            final String address = info.substring(info.length() - 17);
+            final String name = info.substring(0,info.length() - 17);
+
+            // Spawn a new thread to avoid blocking the GUI one
+            new Thread()
+            {
+                public void run() {
+                    boolean fail = false;
+
+                    BluetoothDevice device = mBTAdapter.getRemoteDevice(address);
+
+                    try {
+                        mBTSocket = createBluetoothSocket(device);
+                    } catch (IOException e) {
+                        fail = true;
+                        Toast.makeText(getActivity().getBaseContext(), "소켓 생성에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    // Establish the Bluetooth socket connection.
+                    try {
+                        mBTSocket.connect();
+                    } catch (IOException e) {
+                        try {
+                            fail = true;
+                            mBTSocket.close();
+                            mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
+                                    .sendToTarget();
+                        } catch (IOException e2) {
+                            //insert code to deal with this
+                            Toast.makeText(getActivity().getBaseContext(), "소켓 생성에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    if(fail == false) {
+                        mConnectedThread = new ConnectedThread(mBTSocket);
+                        mConnectedThread.start();
+
+                        mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
+                                .sendToTarget();
+                    }
+                }
+            }.start();
         }
     };
 
