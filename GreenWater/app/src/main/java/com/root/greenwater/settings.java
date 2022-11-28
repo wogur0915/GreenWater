@@ -66,6 +66,7 @@ public class settings extends Fragment {
         mBtnBluetoothOff = view.findViewById(R.id.btnBluetooth_off);
         mDiscoverBtn = view.findViewById(R.id.btn_discover);
         mListPairedDevicesBtn = view.findViewById(R.id.btn_pairedList);
+        mBluetoothStatus = view.findViewById(R.id.bluetoothStatus);
 
         mBTArrayAdapter = new ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1);
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
@@ -86,6 +87,7 @@ public class settings extends Fragment {
         };
 
         if (mBTArrayAdapter == null) {
+            mBluetoothStatus.setText("블루투스 기기 검색 실패");
             Toast.makeText(requireContext(),"블루투스 기기를 찾지 못했습니다.",Toast.LENGTH_SHORT).show();
         }
         else {
@@ -124,6 +126,7 @@ public class settings extends Fragment {
                 // 로그아웃 하기
                 mFirebaseAuth.signOut();
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
+                Toast.makeText(requireActivity(),"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                 requireActivity().finish();
                 startActivity(intent);
             }
@@ -136,15 +139,18 @@ public class settings extends Fragment {
         if (!mBTAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            mBluetoothStatus.setText("블루투스 ON");
             Toast.makeText(requireContext(),"블루투스를 켭니다.",Toast.LENGTH_SHORT).show();
         }
         else{
+            mBluetoothStatus.setText("블루투스 ON");
             Toast.makeText(requireContext(),"블루투스가 이미 켜져 있습니다.", Toast.LENGTH_SHORT).show();
         }
     }
     // 블루투스 끄기
     private void bluetoothOff(View view){
         mBTAdapter.disable(); // turn off
+        mBluetoothStatus.setText("블루투스 OFF");
         Toast.makeText(requireContext(),"블루투스를 껐습니다.", Toast.LENGTH_SHORT).show();
     }
 
@@ -153,12 +159,14 @@ public class settings extends Fragment {
         // Check if the device is already discovering
         if(mBTAdapter.isDiscovering()){
             mBTAdapter.cancelDiscovery();
+            mBluetoothStatus.setText("블루투스 검색 중지");
             Toast.makeText(requireContext(),"기기 검색을 중단했습니다.",Toast.LENGTH_SHORT).show();
         }
         else{
             if(mBTAdapter.isEnabled()) {
                 mBTArrayAdapter.clear(); // clear items
                 mBTAdapter.startDiscovery();
+                mBluetoothStatus.setText("블루투스 검색중...");
                 Toast.makeText(requireContext(), "기기 검색을 시작합니다.", Toast.LENGTH_SHORT).show();
                 requireActivity().registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
             }
@@ -176,7 +184,7 @@ public class settings extends Fragment {
             mBTArrayAdapter.clear(); // clear items
             for (BluetoothDevice device : mPairedDevices)
                 mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-
+            mBluetoothStatus.setText("기기 목록 로드");
             Toast.makeText(requireContext(), "페어링 된 기기 목록을 불러왔습니다.", Toast.LENGTH_SHORT).show();
         }
         else
