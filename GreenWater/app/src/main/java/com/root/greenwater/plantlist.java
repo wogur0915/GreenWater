@@ -23,6 +23,7 @@ public class plantlist extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
         view = inflater.inflate(R.layout.plantlist, container, false);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
