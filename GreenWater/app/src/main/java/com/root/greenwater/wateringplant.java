@@ -18,10 +18,11 @@ import androidx.fragment.app.Fragment;
 public class wateringplant extends Fragment {
 
     private View view;
-//    private Button btn_adjust;
-//    private EditText et_humid;
-//    private TextView tv_humid;
-//    private TextView tv_status;
+    private Button btn_adjust;
+    private EditText et_humid;
+    private TextView tv_humid;
+    private static TextView mtv_humid;
+    private TextView tv_status;
 
     @Nullable
     @Override
@@ -30,10 +31,11 @@ public class wateringplant extends Fragment {
         view = inflater.inflate(R.layout.wateringplant, container, false);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
-        Button btn_adjust = view.findViewById(R.id.btn_adjust);
-        EditText et_humid = view.findViewById(R.id.et_humid);
-        TextView tv_humid = view.findViewById(R.id.tv_humid);
-        TextView tv_status = view.findViewById(R.id.tv_status);
+        btn_adjust = view.findViewById(R.id.btn_adjust);
+        et_humid = view.findViewById(R.id.et_humid);
+        tv_humid = view.findViewById(R.id.tv_humid);
+        tv_status = view.findViewById(R.id.tv_status);
+        mtv_humid = view.findViewById(R.id.tv_humid);
 
         btn_adjust.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,5 +50,10 @@ public class wateringplant extends Fragment {
         });
 
         return view;
+    }
+
+    public static void displayReceivedData(String message)
+    {
+        mtv_humid.setText(message);
     }
 }

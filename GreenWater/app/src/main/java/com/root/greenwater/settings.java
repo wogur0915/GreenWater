@@ -83,6 +83,16 @@ public class settings extends Fragment {
 
         mHandler = new Handler(){
             public void handleMessage(Message msg){
+                if(msg.what == MESSAGE_READ){
+                    String readMessage = null;
+                    try {
+                        readMessage = new String((byte[]) msg.obj, "UTF-8");
+                    }
+                    catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    wateringplant.displayReceivedData(readMessage);
+                }
                 if(msg.what == CONNECTING_STATUS){
                     if(msg.arg1 == 1)
                         mBluetoothStatus.setText("연결된 장치 : " + (String)(msg.obj));
