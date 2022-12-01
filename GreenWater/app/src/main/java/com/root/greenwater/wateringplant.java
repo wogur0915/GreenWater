@@ -54,15 +54,15 @@ public class wateringplant extends Fragment {
 
     public static void displayReceivedData(String message)
     {
-        String cuttingMessage = message.substring(16);
+        String cuttingMessage = message.replaceAll("[^\\d]", "");
         String calcHumid = calculateHumid(cuttingMessage);
-        mtv_humid.setText(cuttingMessage);
+        mtv_humid.setText(calcHumid);
     }
 
     public static String calculateHumid(String humid)
     {
         int tmpHumidInt = parseInt(humid);
-        int humidInt = (4095 - tmpHumidInt);
+        int humidInt = (4095 - tmpHumidInt) / 80;
         String humidString = Integer.toString(humidInt);
         return humidString;
     }
