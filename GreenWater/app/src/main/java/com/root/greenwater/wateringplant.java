@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.core.app.NotificationCompat;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -21,6 +20,7 @@ public class wateringplant extends Fragment {
     private TextView tv_humid;
     private static TextView mtv_humid;
     private static TextView tv_status;
+    private static NotificationHelper mNotificationhelper;
 
     @Nullable
     @Override
@@ -33,6 +33,8 @@ public class wateringplant extends Fragment {
         tv_status = view.findViewById(R.id.tv_status);
         mtv_humid = view.findViewById(R.id.tv_humid);
 
+        mNotificationhelper = new NotificationHelper(requireActivity());
+
         return view;
     }
 
@@ -41,8 +43,10 @@ public class wateringplant extends Fragment {
         String cuttingMessage = message.replaceAll("[^\\d]", "");
         String calcHumid = calculateHumid(cuttingMessage);
         mtv_humid.setText(calcHumid);
-        if (Integer.parseInt(mtv_humid.getText().toString()) < 10)
+        if (Integer.parseInt(mtv_humid.getText().toString()) < 10) {
             tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+            sendOnChannel1("화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
+        }
         else if (Integer.parseInt(mtv_humid.getText().toString()) > 30)
             tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
         else tv_status.setText("화분의 습도가 적당합니다.");
@@ -54,5 +58,11 @@ public class wateringplant extends Fragment {
         int humidInt = (4095 - tmpHumidInt) / 80;
         String humidString = Integer.toString(humidInt);
         return humidString;
+    }
+
+
+    public static void sendOnChannel1(String title, String message){
+        NotificationCompat.Builder nb = mNotificationhelper.getChannel1Notification(title, message);
+        mNotificationhelper.getManager().notify(1, nb.build());
     }
 }
