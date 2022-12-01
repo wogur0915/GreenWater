@@ -58,30 +58,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.293" />
 
-    <EditText
-        android:id="@+id/et_humid"
-        android:layout_width="178dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Enter Soil Moisture"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793" />
-
-    <Button
-        android:id="@+id/btn_adjust"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="적용"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/et_humid"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
