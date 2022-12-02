@@ -44,22 +44,27 @@ public class LoginActivity extends AppCompatActivity {
                 String strEmail = mEtEmail.getText().toString();
                 String strPwd = mEtPwd.getText().toString();
 
-                mFirebaseAuth.signInWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 로그인 성공 했을 때
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            Toast.makeText(LoginActivity.this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                            finish();   // 현재 액티비티 파괴
+                if(!strEmail.isEmpty() && !strPwd.isEmpty()) {
+                    mFirebaseAuth.signInWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // 로그인 성공 했을 때
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(LoginActivity.this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                finish();   // 현재 액티비티 파괴
+                            }
+                            else {
+                                // 로그인 실패 했을 때
+                                Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else {
-                            // 로그인 실패 했을 때
-                            Toast.makeText(LoginActivity.this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "이메일 또는 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
