@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-public class wateringplant extends Fragment {
+public class Wateringplant extends Fragment {
 
     private View view;
     private TextView tv_humid;

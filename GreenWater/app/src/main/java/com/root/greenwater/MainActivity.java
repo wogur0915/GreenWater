@@ -1,6 +1,5 @@
 package com.root.greenwater;
 
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import androidx.annotation.NonNull;
@@ -21,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;  // 하단바 선언
     private FragmentManager fm;  // 프래그먼트 매니저 선언
     private FragmentTransaction ft;  // 프래그먼트 트랜잭션 선언
-    private plantlist plantlist;  // 식물 목록 프래그먼트 선언
-    private wateringplant wateringplant;  // 식물 습도 상태 프래그먼트 선언
-    private managementbook managementbook;  // 식물 관리법 프래그먼트 선언
-    private settings settings;  // 설정 프래그먼트 선언
+    private Plantlist plantlist;  // 식물 목록 프래그먼트 선언
+    private Wateringplant wateringplant;  // 식물 습도 상태 프래그먼트 선언
+    private Managementbook managementbook;  // 식물 관리법 프래그먼트 선언
+    private Settings settings;  // 설정 프래그먼트 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });  // 하단바 아이템 선택 리스너 연결
 
-        plantlist = new plantlist();  // 식물 목록 프래그먼트 생성
-        wateringplant = new wateringplant();  // 식물 습도 상태 프래그먼트 생성
-        managementbook = new managementbook();  // 식물 관리법 프래그먼트 생성
-        settings = new settings();  // 설정 프래그먼트 생성
+        plantlist = new Plantlist();  // 식물 목록 프래그먼트 생성
+        wateringplant = new Wateringplant();  // 식물 습도 상태 프래그먼트 생성
+        managementbook = new Managementbook();  // 식물 관리법 프래그먼트 생성
+        settings = new Settings();  // 설정 프래그먼트 생성
         setFrag();
         changeFrag(0);  // 첫 프래그먼트 화면 지정
 

@@ -35,7 +35,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Set;
 import java.util.UUID;
 
-public class settings extends Fragment {
+public class Settings extends Fragment {
 
     private View view;
     private FirebaseAuth mFirebaseAuth;
@@ -91,7 +91,7 @@ public class settings extends Fragment {
                     catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    wateringplant.displayReceivedData(readMessage);
+                    Wateringplant.displayReceivedData(readMessage);
                 }
                 if(msg.what == CONNECTING_STATUS){
                     if(msg.arg1 == 1)
