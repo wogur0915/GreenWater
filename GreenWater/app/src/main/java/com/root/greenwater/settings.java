@@ -1,6 +1,5 @@
 package com.root.greenwater;
 
-import android.app.Notification;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -188,7 +187,7 @@ public class settings extends Fragment {
                 requireActivity().registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
             }
             else{
-                Toast.makeText(requireContext(), "블루투스가 켜져있지 않습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "블루투스가 켜져 있지 않습니다.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -226,7 +225,7 @@ public class settings extends Fragment {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
 
             if(!mBTAdapter.isEnabled()) {
-                Toast.makeText(getActivity().getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getBaseContext(), "블루투스가 켜져있지 않습니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
 

@@ -43,7 +43,7 @@ public class wateringplant extends Fragment {
         String cuttingMessage = message.replaceAll("[^\\d]", "");
         String calcHumid = calculateHumid(cuttingMessage);
         mtv_humid.setText(calcHumid);
-        if (Integer.parseInt(mtv_humid.getText().toString()) < 10) {
+        if (Integer.parseInt(mtv_humid.getText().toString()) >= 0 && Integer.parseInt(mtv_humid.getText().toString()) < 10) {
             tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
             sendOnChannel1("화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
         }
