@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,8 @@ public class Settings extends Fragment {
     private Set<BluetoothDevice> mPairedDevices;
     private ArrayAdapter<String> mBTArrayAdapter;
 
+    private Object mLock;
+    private Thread t;
     private Handler mHandler; // Our main handler that will receive callback notifications
     private ConnectedThread mConnectedThread; // bluetooth background worker thread to send and receive data
     private BluetoothSocket mBTSocket = null; // bi-directional client-to-client data path
@@ -80,6 +83,8 @@ public class Settings extends Fragment {
         mDevicesListView = view.findViewById(R.id.devicesListView);
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
         mDevicesListView.setOnItemClickListener(mDeviceClickListener);
+
+        mLock = new Object();
 
         mHandler = new Handler(){
             public void handleMessage(Message msg){
@@ -236,7 +241,7 @@ public class Settings extends Fragment {
             final String name = info.substring(0,info.length() - 17);
 
             // Spawn a new thread to avoid blocking the GUI one
-            new Thread()
+            t = new Thread()
             {
                 public void run() {
                     boolean fail = false;
@@ -271,9 +276,24 @@ public class Settings extends Fragment {
                                 .sendToTarget();
                     }
                 }
-            }.start();
+            };
+            t.start();
         }
     };
+
+    @Override
+    public void onDestroy() {
+        Log.d("settings", "onDestroy!!");
+        super.onDestroy();
+        if(t != null) {
+            t.interrupt();
+        }
+        if(mConnectedThread != null) {
+            synchronized (mLock) {
+                mConnectedThread.interrupt();
+            }
+        }
+    }
 
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
         return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
@@ -305,21 +325,23 @@ public class Settings extends Fragment {
             byte[] buffer = new byte[1024];  // buffer store for the stream
             int bytes; // bytes returned from read()
             // Keep listening to the InputStream until an exception occurs
-            while (true) {
-                try {
-                    // Read from the InputStream
-                    bytes = mmInStream.available();
-                    if(bytes != 0) {
-                        SystemClock.sleep(100); //pause and wait for rest of data. Adjust this depending on your sending speed.
-                        bytes = mmInStream.available(); // how many bytes are ready to be read?
-                        bytes = mmInStream.read(buffer, 0, bytes); // record how many bytes we actually read
-                        mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
-                                .sendToTarget(); // Send the obtained bytes to the UI activity
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+            while (!Thread.currentThread().isInterrupted()) {
+                synchronized (mLock) {
+                    try {
+                        // Read from the InputStream
+                        bytes = mmInStream.available();
+                        if(bytes != 0) {
+                            SystemClock.sleep(100); //pause and wait for rest of data. Adjust this depending on your sending speed.
+                            bytes = mmInStream.available(); // how many bytes are ready to be read?
+                            bytes = mmInStream.read(buffer, 0, bytes); // record how many bytes we actually read
+                            mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
+                                    .sendToTarget(); // Send the obtained bytes to the UI activity
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
 
-                    break;
+                        break;
+                    }
                 }
             }
         }
