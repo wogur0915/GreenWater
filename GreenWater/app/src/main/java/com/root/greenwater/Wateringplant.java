@@ -21,6 +21,7 @@ public class Wateringplant extends Fragment {
     private static TextView mtv_humid;
     private static TextView tv_status;
     private static NotificationHelper mNotificationhelper;
+    public static int count = 0;
 
     @Nullable
     @Override
@@ -45,11 +46,25 @@ public class Wateringplant extends Fragment {
         mtv_humid.setText(calcHumid);
         if (Integer.parseInt(mtv_humid.getText().toString()) >= 0 && Integer.parseInt(mtv_humid.getText().toString()) < 10) {
             tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+            alertDelay();
+        }
+        else if (Integer.parseInt(mtv_humid.getText().toString()) > 30) {
+            count = 0;
+            tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
+        }
+        else {
+            count = 0;
+            tv_status.setText("화분의 습도가 적당합니다.");
+        }
+    }
+
+    public static void alertDelay()
+    {
+        count = count + 1;
+        if (count == 1 || count % 750 == 0) {
             sendOnChannel1("화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
         }
-        else if (Integer.parseInt(mtv_humid.getText().toString()) > 30)
-            tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
-        else tv_status.setText("화분의 습도가 적당합니다.");
+
     }
 
     public static String calculateHumid(String humid)
