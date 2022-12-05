@@ -88,6 +88,19 @@ public class Settings extends Fragment {
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
         mDevicesListView.setOnItemClickListener(mDeviceClickListener);
 
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // 스위치 버튼이 체크되었는지 검사
+                if (isChecked){
+                    mSwitch.setText("알림 ON");
+                }else{
+                    mSwitch.setText("알림 OFF");
+                    // 알림 해제
+                }
+            }
+        });
+
         mLock = new Object();
 
         mHandler = new Handler(){

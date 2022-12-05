@@ -108,10 +108,10 @@
 
             <Switch
                 android:id="@+id/alert_switch"
-                android:layout_width="80dp"
-                android:layout_height="31dp"
+                android:layout_width="115dp"
+                android:layout_height="32dp"
                 android:checked="true"
-                android:text="알림"
+                android:text="알림 ON"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

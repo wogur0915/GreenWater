@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 public class Wateringplant extends Fragment {
 
     private View view;
-    private TextView tv_humid;
     private static TextView mtv_humid;
     private static TextView tv_status;
     private static NotificationHelper mNotificationhelper;
@@ -32,7 +31,6 @@ public class Wateringplant extends Fragment {
         view = inflater.inflate(R.layout.wateringplant, container, false);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
-        tv_humid = view.findViewById(R.id.tv_humid);
         tv_status = view.findViewById(R.id.tv_status);
         mtv_humid = view.findViewById(R.id.tv_humid);
         iv_plant = view.findViewById(R.id.plant_image);
@@ -70,7 +68,6 @@ public class Wateringplant extends Fragment {
         if (count == 1 || count % 800 == 0) {
             sendOnChannel1("화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
         }
-
     }
 
     public static String calculateHumid(String humid)
