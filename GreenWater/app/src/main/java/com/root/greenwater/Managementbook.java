@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-public class managementbook extends Fragment {
+public class Managementbook extends Fragment {
 
     private View view;
 

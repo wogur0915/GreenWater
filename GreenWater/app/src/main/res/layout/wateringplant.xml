@@ -6,82 +6,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="수분상태에 따른 문구"
-        android:textSize="30dp"
+    <ImageView
+        android:id="@+id/plant_image"
+        android:layout_width="344dp"
+        android:layout_height="688dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:srcCompat="@drawable/smile_plant" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="현재 화분 습도 : "
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_status"
+        android:id="@+id/tv_status"
+        android:layout_width="325dp"
+        android:layout_height="121dp"
+        android:gravity="center"
+        android:text="수분상태에 따른 문구"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="0.901" />
 
     <TextView
         android:id="@+id/tv_humid"
-        android:layout_width="40dp"
-        android:layout_height="38dp"
-        android:text="0"
-        android:textSize="20dp"
+        android:layout_width="92dp"
+        android:layout_height="71dp"
+        android:gravity="center"
+        android:text="-1%"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
-
-    <TextView
-        android:id="@+id/tv_percent"
-        android:layout_width="21dp"
-        android:layout_height="25dp"
-        android:text="%"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
-
-    <EditText
-        android:id="@+id/et_humid"
-        android:layout_width="178dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Enter Soil Moisture"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793" />
+        app:layout_constraintVertical_bias="0.433" />
 
-    <Button
-        android:id="@+id/btn_adjust"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="적용"
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="214dp"
+        android:layout_height="42dp"
+        android:gravity="center"
+        android:text="현재 화분 습도"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/et_humid"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79" />
+        app:layout_constraintVertical_bias="0.11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

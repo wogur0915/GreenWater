@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class plantlist extends Fragment {
+public class Plantlist extends Fragment {
 
     private View view;
     private ListView plantlist;
