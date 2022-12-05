@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class Settings extends Fragment {
     private BluetoothAdapter mBTAdapter;
     private Set<BluetoothDevice> mPairedDevices;
     private ArrayAdapter<String> mBTArrayAdapter;
+    private Switch mSwitch;
 
     private Object mLock;
     private Thread t;
@@ -76,6 +79,7 @@ public class Settings extends Fragment {
         mDiscoverBtn = view.findViewById(R.id.btn_discover);
         mListPairedDevicesBtn = view.findViewById(R.id.btn_pairedList);
         mBluetoothStatus = view.findViewById(R.id.bluetoothStatus);
+        mSwitch = view.findViewById(R.id.alert_switch);
 
         mBTArrayAdapter = new ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1);
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio

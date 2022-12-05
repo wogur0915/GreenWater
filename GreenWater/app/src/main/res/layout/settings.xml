@@ -76,18 +76,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/btn_alertOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="알림 끄기"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_logout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_pairedList"
-                app:layout_constraintVertical_bias="0.873" />
 
             <Button
                 android:id="@+id/btn_logout"
@@ -98,22 +86,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.818"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_pairedList"
-                app:layout_constraintVertical_bias="0.873" />
-
-            <Button
-                android:id="@+id/btn_alertOn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="알림 켜기"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_logout"
-                app:layout_constraintTop_toBottomOf="@+id/btn_discover"
-                app:layout_constraintVertical_bias="0.865" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/bluetoothStatus"
@@ -129,6 +105,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/alert_switch"
+                android:layout_width="80dp"
+                android:layout_height="31dp"
+                android:checked="true"
+                android:text="알림"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_logout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pairedList" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
