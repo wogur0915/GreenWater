@@ -308,6 +308,7 @@ public class Settings extends Fragment {
         if(mConnectedThread != null) {
             synchronized (mLock) {
                 mConnectedThread.interrupt();
+                Wateringplant.count = 0;
             }
         }
     }

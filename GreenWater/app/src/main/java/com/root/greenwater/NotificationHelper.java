@@ -3,8 +3,10 @@ package com.root.greenwater;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -33,7 +35,7 @@ public class NotificationHelper extends ContextWrapper {
         NotificationChannel channel1 = new NotificationChannel(channel1ID, channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
         channel1.enableLights(true);
         channel1.enableVibration(true);
-        channel1.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        channel1.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
 
         getManager().createNotificationChannel(channel1);
     }
@@ -48,9 +50,17 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannel1Notification(String title, String message){
 
+        Intent intent = new Intent(this, Wateringplant.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 }
