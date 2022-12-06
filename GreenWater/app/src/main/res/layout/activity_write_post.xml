@@ -9,9 +9,13 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
+        android:hint="제목"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="131dp" />
 
@@ -19,10 +23,25 @@
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="내용"
         android:inputType="textMultiLine"
+        android:lines="10"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="235dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="확인"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
