@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Wateringplant wateringplant;  // 식물 습도 상태 프래그먼트 선언
     private Managementbook managementbook;  // 식물 관리법 프래그먼트 선언
     private Settings settings;  // 설정 프래그먼트 선언
+    private static final String NOTIFICATION = "notification";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,25 @@ public class MainActivity extends AppCompatActivity {
         setFrag();
         changeFrag(0);  // 첫 프래그먼트 화면 지정
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            final boolean fromNotification = extras.getBoolean(NOTIFICATION);
+            if (fromNotification) {
+                changeFrag(1);
+            }
+        }
     }
 
     private void setFrag() {

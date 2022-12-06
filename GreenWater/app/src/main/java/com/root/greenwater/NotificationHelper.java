@@ -16,6 +16,7 @@ public class NotificationHelper extends ContextWrapper {
 
     public static final String channel1ID = "channel1ID";
     public static final String channel1Name = "channel 1";
+    private static final String NOTIFICATION = "notification";
 
     private NotificationManager mManager;
 
@@ -50,9 +51,12 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannel1Notification(String title, String message){
 
-        Intent intent = new Intent(this, Wateringplant.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(NOTIFICATION, true);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 100, intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
 
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
                 .setContentTitle(title)
