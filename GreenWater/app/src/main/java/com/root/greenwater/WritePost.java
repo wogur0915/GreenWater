@@ -20,6 +20,7 @@ public class WritePost extends BasicActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     public static int postNum;
+    public String postN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class WritePost extends BasicActivity {
                 //sKey가 null이 아니면 sKey값으로 데이터를 저장한다.
                 if(sKey != null){
                     postNum++;
-                    String postN = String.format("post_%d", postNum);
+                    postN = String.format("post_%d", postNum);
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Inner").setValue(sInner);
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Title").setValue(sTitle);
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").setValue(postNum);
