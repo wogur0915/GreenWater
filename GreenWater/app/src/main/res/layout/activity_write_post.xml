@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteY="131dp" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editInner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -35,7 +35,7 @@
         tools:layout_editor_absoluteY="235dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submit_post"
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:layout_marginLeft="10dp"

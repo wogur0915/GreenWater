@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasicActivity {
     
     private BottomNavigationView bottomNavigationView;  // 하단바 선언
     private FragmentManager fm;  // 프래그먼트 매니저 선언
