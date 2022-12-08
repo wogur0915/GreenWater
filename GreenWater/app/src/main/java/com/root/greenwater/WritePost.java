@@ -1,5 +1,6 @@
 package com.root.greenwater;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class WritePost extends BasicActivity {
     private DatabaseReference mDatabaseRef;
     public static int postNum;
     public String postN;
+    private static final String ADDPOST = "addpost";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,9 @@ public class WritePost extends BasicActivity {
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").setValue(postNum);
                 }
                 Toast.makeText(WritePost.this, "메모가 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(WritePost.this, MainActivity.class);
+                intent.putExtra(ADDPOST, true);
+                startActivity(intent);
                 finish();
             } //onClick
         });//setOnClickListener

@@ -26,6 +26,8 @@ public class MainActivity extends BasicActivity {
     private Managementbook managementbook;  // 식물 관리법 프래그먼트 선언
     private Settings settings;  // 설정 프래그먼트 선언
     private static final String NOTIFICATION = "notification";
+    private static final String ADDPOST = "addpost";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +84,12 @@ public class MainActivity extends BasicActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             final boolean fromNotification = extras.getBoolean(NOTIFICATION);
+            final boolean fromAddpost = extras.getBoolean(ADDPOST);
             if (fromNotification) {
                 changeFrag(1);
+            }
+            else if (fromAddpost) {
+                changeFrag(2);
             }
         }
     }

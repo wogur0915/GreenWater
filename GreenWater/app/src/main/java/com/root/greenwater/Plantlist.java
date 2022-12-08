@@ -61,7 +61,7 @@ public class Plantlist extends Fragment {
                 int getPNum = (int)dataSnapshot.getValue(Integer.class);
                 postNum = getPNum;
                 arrayList.clear();
-                for (int i = postNum; i > 0; i--) {
+                for (int i = postNum; 0 < i; i--) {
                     String postN = String.format("post_%d", i);
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -71,6 +71,7 @@ public class Plantlist extends Fragment {
                             String contents = snapshot.child("Inner").getValue(String.class);
                             arrayList.add("※ "+title + "\n\n" + "  - "+ contents);
                             listView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
