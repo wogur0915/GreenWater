@@ -86,11 +86,9 @@ public class MainActivity extends BasicActivity {
             final boolean fromNotification = extras.getBoolean(NOTIFICATION);
             final boolean fromAddpost = extras.getBoolean(ADDPOST);
             if (fromNotification) {
-                finish();
                 changeFrag(1);
             }
             else if (fromAddpost) {
-                finish();
                 changeFrag(2);
             }
         }

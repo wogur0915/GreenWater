@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.annotation.NonNull;
@@ -74,6 +75,7 @@ public class Wateringplant extends Fragment {
             count = count + 1;
             if (count == 1 || count % 800 == 0) {
                 sendOnChannel1("GreenWater - 화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
+                Toast.makeText(mtv_humid.getContext(), "화분의 습도가 낮습니다.\n물을 주세요.", Toast.LENGTH_SHORT).show();
             }
         }
     }
