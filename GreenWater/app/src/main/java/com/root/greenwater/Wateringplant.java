@@ -35,6 +35,12 @@ public class Wateringplant extends Fragment {
         mtv_humid = view.findViewById(R.id.tv_humid);
         iv_plant = view.findViewById(R.id.plant_image);
         mNotificationhelper = new NotificationHelper(requireActivity());
+        System.out.println(mtv_humid.getText().toString());
+        if (mtv_humid.getText().toString() == "-1%") {
+            tv_status.setText("모니터링 장치가 연결되지 않았습니다.");
+            mtv_humid.setText("");
+            iv_plant.setImageResource(R.drawable.connection_error);
+        }
 
         return view;
     }

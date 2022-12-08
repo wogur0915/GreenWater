@@ -17,14 +17,14 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/smile_plant" />
+        app:srcCompat="@drawable/connection_error" />
 
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="325dp"
         android:layout_height="121dp"
         android:gravity="center"
-        android:text="수분상태에 따른 문구"
+        android:text="장치를 연결해 주세요"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,6 @@
         android:layout_width="92dp"
         android:layout_height="71dp"
         android:gravity="center"
-        android:text="-1%"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
