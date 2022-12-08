@@ -34,10 +34,10 @@ public class Plantlist extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     private static int postNum;
-    ListView listView;
+    static ListView listView;
 
-    ArrayList<String> arrayList = new ArrayList<>();
-    ArrayAdapter<String> adapter;
+    public static ArrayList<String> arrayList = new ArrayList<>();
+    public static ArrayAdapter<String> adapter;
 
     @Nullable
     @Override
@@ -60,8 +60,8 @@ public class Plantlist extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int getPNum = (int)dataSnapshot.getValue(Integer.class);
                 postNum = getPNum;
-
-                for (int i = postNum; 0 < i; i--) {
+                arrayList.clear();
+                for (int i = postNum; i > 0; i--) {
                     String postN = String.format("post_%d", i);
                     mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -71,7 +71,6 @@ public class Plantlist extends Fragment {
                             String contents = snapshot.child("Inner").getValue(String.class);
                             arrayList.add("※ "+title + "\n\n" + "  - "+ contents);
                             listView.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

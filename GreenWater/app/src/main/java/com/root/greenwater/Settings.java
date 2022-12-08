@@ -166,6 +166,7 @@ public class Settings extends Fragment {
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
                 Toast.makeText(requireActivity(),"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                 requireActivity().finish();
+                Plantlist.arrayList.clear();
                 startActivity(intent);
             }
         });
