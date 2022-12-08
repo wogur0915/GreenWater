@@ -52,6 +52,7 @@ public class Settings extends Fragment {
     private Set<BluetoothDevice> mPairedDevices;
     private ArrayAdapter<String> mBTArrayAdapter;
     private Switch mSwitch;
+    public static int alerFlag = 1;
 
     private Object mLock;
     private Thread t;
@@ -94,8 +95,10 @@ public class Settings extends Fragment {
                 // 스위치 버튼이 체크되었는지 검사
                 if (isChecked){
                     mSwitch.setText("알림 ON");
+                    alerFlag = 1;
                 }else{
                     mSwitch.setText("알림 OFF");
+                    alerFlag = 0;
                     // 알림 해제
                 }
             }

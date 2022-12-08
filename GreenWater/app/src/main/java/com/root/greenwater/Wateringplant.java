@@ -70,9 +70,11 @@ public class Wateringplant extends Fragment {
 
     public static void alertDelay()
     {
-        count = count + 1;
-        if (count == 1 || count % 800 == 0) {
-            sendOnChannel1("GreenWater - 화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
+        if (Settings.alerFlag == 1) {
+            count = count + 1;
+            if (count == 1 || count % 800 == 0) {
+                sendOnChannel1("GreenWater - 화분 습도 경고 알림", "화분의 습도가 낮습니다.\n물을 주세요.");
+            }
         }
     }
 

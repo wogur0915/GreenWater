@@ -63,8 +63,8 @@ public class WritePost extends BasicActivity {
                 Toast.makeText(WritePost.this, "메모가 저장되었습니다.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(WritePost.this, MainActivity.class);
                 intent.putExtra(ADDPOST, true);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
             } //onClick
         });//setOnClickListener
     }//onCreate
