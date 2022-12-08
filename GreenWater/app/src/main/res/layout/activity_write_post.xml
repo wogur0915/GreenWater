@@ -56,6 +56,11 @@
             android:padding="10dp"
             tools:layout_editor_absoluteX="84dp"
             tools:layout_editor_absoluteY="235dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_View"
+            android:layout_width="match_parent"
+            android:layout_height="36dp" />
     </LinearLayout>
 
     <LinearLayout
