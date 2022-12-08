@@ -53,9 +53,40 @@ public class Plantlist extends Fragment {
         adapter = new ArrayAdapter<>(requireActivity(),
                 android.R.layout.simple_list_item_1, arrayList);
 
-        getPostNum();
-        getPostingList();
         addlist_btn = view.findViewById(R.id.addlist_btn);
+
+        mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int getPNum = (int)dataSnapshot.getValue(Integer.class);
+                postNum = getPNum;
+
+                for (int i = postNum; 0 < i; i--) {
+                    String postN = String.format("post_%d", i);
+                    mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            String title = snapshot.child("Title").getValue(String.class);
+                            String contents = snapshot.child("Inner").getValue(String.class);
+                            arrayList.add("※ "+title + "\n\n" + "  - "+ contents);
+                            listView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         addlist_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
