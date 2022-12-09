@@ -86,28 +86,32 @@ public class WritePost extends BasicActivity {
                 String sTitle = editTitle.getText().toString();
                 String sInner = editInner.getText().toString();
 
-                //키 생성
-                String sKey = mDatabaseRef.getKey();
-
-                //선택한 이미지가 있다면
-                if (imageUri != null) {
-                    uploadToFirebase(imageUri);
+                if ((sTitle.equals("") || sInner.equals(""))) {
+                    Toast.makeText(WritePost.this, "제목과 내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(WritePost.this, "사진을 선택해주세요.", Toast.LENGTH_SHORT).show();
+                    //키 생성
+                    String sKey = mDatabaseRef.getKey();
+
+                    //sKey가 null이 아니면 sKey값으로 데이터를 저장한다.
+                    if (sKey != null) {
+                        postNum++;
+                        postN = String.format("post_%d", postNum);
+                        mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Inner").setValue(sInner);
+                        mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Title").setValue(sTitle);
+                        mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").setValue(postNum);
+                    }
+                    //선택한 이미지가 있다면
+                    if (imageUri != null) {
+                        uploadToFirebase(imageUri);
+                    } else {
+                        Toast.makeText(WritePost.this, "사진이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(WritePost.this, "메모가 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(WritePost.this, MainActivity.class);
+                    intent.putExtra(ADDPOST, true);
+                    finish();
+                    startActivity(intent);
                 }
-                //sKey가 null이 아니면 sKey값으로 데이터를 저장한다.
-                if(sKey != null){
-                    postNum++;
-                    postN = String.format("post_%d", postNum);
-                    mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Inner").setValue(sInner);
-                    mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child(postN).child("Title").setValue(sTitle);
-                    mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").setValue(postNum);
-                }
-                Toast.makeText(WritePost.this, "메모가 저장되었습니다.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(WritePost.this, MainActivity.class);
-                intent.putExtra(ADDPOST, true);
-                finish();
-                startActivity(intent);
             } //onClick
         });//setOnClickListener
 
