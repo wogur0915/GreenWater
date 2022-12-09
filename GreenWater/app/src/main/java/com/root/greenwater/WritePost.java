@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,12 +38,13 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class WritePost extends BasicActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
-    private final DatabaseReference root = FirebaseDatabase.getInstance().getReference("greewater");
+    private final DatabaseReference root = FirebaseDatabase.getInstance().getReference("greenwater");
     private final StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     public static int postNum;
     public String postN;
@@ -54,6 +56,7 @@ public class WritePost extends BasicActivity {
     private Uri imageUri;
     private static final String ADDPOST = "addpost";
     private final int GET_GALLERY_IMAGE = 200;
+    public static int pictureNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +105,7 @@ public class WritePost extends BasicActivity {
                     }
                     //선택한 이미지가 있다면
                     if (imageUri != null) {
+                        pictureNum++;
                         uploadToFirebase(imageUri);
                     } else {
                         Toast.makeText(WritePost.this, "사진이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show();
@@ -138,9 +142,15 @@ public class WritePost extends BasicActivity {
 
     //파이어베이스 이미지 업로드
     private void uploadToFirebase(Uri uri) {
+        File file = getExternalFilesDir(Environment.DIRECTORY_PICTURES + "Post_Images/" + mFirebaseAuth.getUid() + "/"); //이미지를 저장할 수 있는 디렉토리
+        //구분할 수 있게 /toolbar_images폴더에 넣어준다.
+        //이 파일안에 저 디렉토리가 있는지 확인
+        if (!file.isDirectory()) { //디렉토리가 없으면,
+            file.mkdir(); //디렉토리를 만든다.
+        }
 
-        String filename = "post_" + postNum;
-        StorageReference fileRef = storageReference.child("Post_Images/" + filename + "." + getFileExtension(uri));
+        String filename = "post_" + pictureNum;
+        StorageReference fileRef = storageReference.child("Post_Images/" + mFirebaseAuth.getUid() + "/" + filename + ".jpg");
 
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override

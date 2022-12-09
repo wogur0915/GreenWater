@@ -53,6 +53,10 @@
             android:name=".WritePost"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".AlbumActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="89dp"
+        android:layout_marginStart="82dp"
         android:layout_marginTop="30dp"
         android:text="나의 식물 일지"
         android:textSize="40dp" />
@@ -30,17 +30,27 @@
 
     <ListView
         android:id="@+id/memolist"
-        android:layout_width="409dp"
-        android:layout_height="538dp"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/addlist_btn"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="19dp"
         android:layout_marginBottom="4dp" />
+
+    <Button
+        android:id="@+id/btn_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="41dp"
+        android:text="앨범" />
 
 
 </RelativeLayout>

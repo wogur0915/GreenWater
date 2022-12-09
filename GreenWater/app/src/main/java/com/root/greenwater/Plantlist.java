@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +30,7 @@ public class Plantlist extends Fragment {
 
     private View view;
     public FloatingActionButton addlist_btn;
+    private Button btn_album;
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     private static int postNum;
@@ -54,6 +54,7 @@ public class Plantlist extends Fragment {
                 android.R.layout.simple_list_item_1, arrayList);
 
         addlist_btn = view.findViewById(R.id.addlist_btn);
+        btn_album = view.findViewById(R.id.btn_album);
 
         mDatabaseRef.child("UserAccount").child(mFirebaseAuth.getUid()).child("PostingList").child("SavePostNum").addValueEventListener(new ValueEventListener() {
             @Override
@@ -91,6 +92,13 @@ public class Plantlist extends Fragment {
             @Override
             public void onClick(View view) {
                 myStartActivity(WritePost.class);
+            }
+        });
+
+        btn_album.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myStartActivity(AlbumActivity.class);
             }
         });
         return view;
