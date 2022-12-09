@@ -41,7 +41,7 @@
         android:id="@+id/tv_humid"
         android:layout_width="92dp"
         android:layout_height="71dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:textSize="34sp"
         android:textStyle="bold"
