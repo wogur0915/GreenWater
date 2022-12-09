@@ -29,6 +29,7 @@ public class Managementbook extends Fragment {
     TextView text;
 
     String cntntsNo = null;
+    boolean incntntsNo = false;
 
     String key = "20221114SOXZKWXXJJSDEZYFMHEBG"; // 할당받은 api키
 
@@ -54,8 +55,6 @@ public class Managementbook extends Fragment {
 
         View v = inflater.inflate(R.layout.managementbook, container, false); // fragment안에서 setContentView, findViewById 사용하기 위해 inflater
 
-        //setContentView(R.layout.managementbook);
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
         edit = (EditText) v.findViewById(R.id.edit);
@@ -67,7 +66,7 @@ public class Managementbook extends Fragment {
             @Override
             public void onClick(View v)
             {
-                text.setText("");
+                text.setText(""); // 이전의 결과 값을 보이지 않게 삭제
                 switch (v.getId()) {
                     case R.id.button:
 
@@ -75,17 +74,8 @@ public class Managementbook extends Fragment {
 
                             @Override
                             public void run() {
-                                cntntsNo = getXmlDatalist(); // 식물명 검색하면 컨텐츠 번호 받아오기
+                                getXmlDatalist(); // 식물명 검색하면 컨텐츠 번호 받아오기
                                 getXmlDataDtl(cntntsNo); // 받아온 컨텐츠 번호로 식물 상세정보 받아오기
-
-
-
-                                getActivity().runOnUiThread(new Runnable() { // fragment안에서 runOnUiThread 사용하기위해 getActivity 사용
-                                    @Override
-                                    public void run() {
-                                        //text.setText(data);
-                                    }
-                                });
                             }
                         }).start();
                         break;
@@ -96,7 +86,7 @@ public class Managementbook extends Fragment {
         return v; // return inflater
     }
 
-    String getXmlDatalist() {
+    void getXmlDatalist() {
 
         StringBuffer buffer = new StringBuffer();
 
@@ -130,25 +120,16 @@ public class Managementbook extends Fragment {
                         break;
 
                     case XmlPullParser.START_TAG:
-                        tag = xpp.getName();
-
-                        if (tag.equals("item")) ;
-                        else if (tag.equals("cntntsNo")) {
-                            cntntsNo = xpp.getName();
-                            //buffer.append("컨텐츠번호 : ");
-                            xpp.next();
-                            buffer.append(xpp.getText());
-                            // buffer.append("\n");
-                        } /*else if (tag.equals("cntntsSj")) {
-                            //buffer.append("식물명 : ");
-                            xpp.next();
-                            buffer.append(xpp.getText());
-                            buffer.append("\n");
+                        if(xpp.getName().equals("cntntsNo")){
+                            incntntsNo = true;
                         }
-                        */
                         break;
 
                     case XmlPullParser.TEXT:
+                        if(incntntsNo){
+                            cntntsNo = xpp.getText();
+                            incntntsNo = false;
+                        }
                         break;
 
                     case XmlPullParser.END_TAG:
@@ -165,9 +146,6 @@ public class Managementbook extends Fragment {
         } catch (Exception e) {
 
         }
-        //buffer.append("파싱 끝\n");
-        return buffer.toString();
-
     }
 
     void getXmlDataDtl(String cntntsNo) {
@@ -202,7 +180,6 @@ public class Managementbook extends Fragment {
                         break;
 
                     case XmlPullParser.START_TAG:
-                        //tag = xpp.getName();
                         if (xpp.getName().equals("distbNm")) {
                             indistbNm = true;
                         }
