@@ -72,6 +72,12 @@ git clone https://github.com/wogur0915/GreenWater
 - 5. 식물 도감 메뉴에서 키우는 식물 검색 후 관련 정보 습득
 
 
+## 실행 화면
+
+![KakaoTalk_20221210_204433706](https://user-images.githubusercontent.com/34836246/206853405-a1ad426b-dde9-4ccc-b3f2-08b2641f284e.jpg)
+![KakaoTalk_20221210_203025133_06](https://user-images.githubusercontent.com/34836246/206853426-7a7c473e-31ea-4d54-acea-ce94d2a9de21.jpg)
+
+
 ## 연락처
 
 * 임재혁 : wogur091511@naver.com
