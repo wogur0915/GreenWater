@@ -48,7 +48,7 @@ YL-69
 ## 설치방법
 
 #### Android 환경
-- Code Zip 파일 다운로드 후 GreenWater\GreenWater\app\build\outputs\apk\debug 경로로 이동 후 존재하는 apk 파일을 이용하여 설치
+- Code Zip 파일 다운로드 후 GreenWater/For_Install_App/ 경로로 이동 후 존재하는 GreenWater.apk 파일을 이용하여 설치
 - 만약 apk파일이 없을 경우 Window 환경을 통해 Android Studio 에서 APK Build 후 해당 경로에서 apk 파일을 안드로이드 기기로 옮겨 설치
 
 
