@@ -26,9 +26,12 @@
         android:layout_width="238dp"
         android:layout_height="41dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/sd_misaeng"
         android:gravity="center"
+        android:padding="2dp"
         android:text="화분 습도 모니터"
-        android:textSize="34sp"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,11 +58,12 @@
 
     <TextView
         android:id="@+id/tv_status"
-        android:layout_width="325dp"
-        android:layout_height="121dp"
+        android:layout_width="282dp"
+        android:layout_height="120dp"
+        android:fontFamily="@font/sd_misaeng"
         android:gravity="center"
         android:text="장치를 연결해 주세요"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="습한 식물"
+            android:fontFamily="@font/sd_misaeng"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -97,6 +103,8 @@
             android:layout_marginRight="10dp"
             android:checked="true"
             android:text="일반"
+            android:fontFamily="@font/sd_misaeng"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -105,6 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="건조 식물"
+            android:fontFamily="@font/sd_misaeng"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </RadioGroup>
 
