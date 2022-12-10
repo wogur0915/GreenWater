@@ -43,6 +43,7 @@ Arduino IDE >= 1.8
 ESP32-DevKitC V4
 YL-69
 ```
+-----
 
 ## 설치방법
 
@@ -62,6 +63,7 @@ git clone https://github.com/wogur0915/GreenWater
 - Arduino IDE 를 실행하여 arduinoCodes 폴더 내의 soil_moisture_with_bluetooth 폴더에 있는 soil_moisture_with_bluetooth.ino 실행 후 아두이노 장치에 업로드
 - Android Studio 로 실행 후 내장되어있는 Emulator 또는 안드로이드 기기에 연결하여 실행
 
+-----
 
 ## 사용 방법
 
@@ -77,12 +79,16 @@ git clone https://github.com/wogur0915/GreenWater
 ![KakaoTalk_20221210_204433706](https://user-images.githubusercontent.com/34836246/206853405-a1ad426b-dde9-4ccc-b3f2-08b2641f284e.jpg)
 ![KakaoTalk_20221210_203025133_06](https://user-images.githubusercontent.com/34836246/206853426-7a7c473e-31ea-4d54-acea-ce94d2a9de21.jpg)
 
+-----
 
-## 연락처
+## 연락처 (Contributors)
 
-* 임재혁 : wogur091511@naver.com
-* 이중현 : 2gunghyun@naver.com
+| |임재혁|이중현|
+|------|----|----|
+|GitHub| [wogur0915](https://github.com/wogur0915)              |      [pfc01](https://github.com/pfc01)         |
+|Email | wogur091511@naver.com                                  |     2gunghyun@naver.com                          |
 
+-----
 
 ## License
 
