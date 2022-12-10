@@ -52,6 +52,7 @@ public class Settings extends Fragment {
     private Set<BluetoothDevice> mPairedDevices;
     private ArrayAdapter<String> mBTArrayAdapter;
     private Switch mSwitch;
+    public static int alerFlag = 1;
 
     private Object mLock;
     private Thread t;
@@ -87,6 +88,21 @@ public class Settings extends Fragment {
         mDevicesListView = view.findViewById(R.id.devicesListView);
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
         mDevicesListView.setOnItemClickListener(mDeviceClickListener);
+
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // 스위치 버튼이 체크되었는지 검사
+                if (isChecked){
+                    mSwitch.setText("알림 ON");
+                    alerFlag = 1;
+                }else{
+                    mSwitch.setText("알림 OFF");
+                    alerFlag = 0;
+                    // 알림 해제
+                }
+            }
+        });
 
         mLock = new Object();
 
@@ -153,6 +169,7 @@ public class Settings extends Fragment {
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
                 Toast.makeText(requireActivity(),"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                 requireActivity().finish();
+                Plantlist.arrayList.clear();
                 startActivity(intent);
             }
         });
@@ -295,6 +312,7 @@ public class Settings extends Fragment {
         if(mConnectedThread != null) {
             synchronized (mLock) {
                 mConnectedThread.interrupt();
+                Wateringplant.count = 0;
             }
         }
     }

@@ -8,59 +8,104 @@
 
     <ImageView
         android:id="@+id/plant_image"
-        android:layout_width="344dp"
-        android:layout_height="688dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="333dp"
+        android:layout_height="686dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/smile_plant" />
+        app:layout_constraintVertical_bias="0.627"
+        app:srcCompat="@drawable/connection_error" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="238dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="화분 습도 모니터"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <TextView
+        android:id="@+id/tv_humid"
+        android:layout_width="92dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="32dp"
+        android:gravity="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
 
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="325dp"
         android:layout_height="121dp"
         android:gravity="center"
-        android:text="수분상태에 따른 문구"
+        android:text="장치를 연결해 주세요"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.909" />
 
-    <TextView
-        android:id="@+id/tv_humid"
-        android:layout_width="92dp"
-        android:layout_height="71dp"
-        android:gravity="center"
-        android:text="-1%"
-        android:textSize="34sp"
-        android:textStyle="bold"
+    <RadioGroup
+        android:id="@+id/rg_plantgroup"
+        android:layout_width="263dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.055">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="214dp"
-        android:layout_height="42dp"
-        android:gravity="center"
-        android:text="현재 화분 습도"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        <RadioButton
+            android:id="@+id/rdo_wetplant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="습한 식물"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rdo_normalplant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:checked="true"
+            android:text="일반"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rdo_dryplant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="건조 식물"
+            android:textStyle="bold" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

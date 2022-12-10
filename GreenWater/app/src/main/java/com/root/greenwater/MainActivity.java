@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,7 +16,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasicActivity {
     
     private BottomNavigationView bottomNavigationView;  // 하단바 선언
     private FragmentManager fm;  // 프래그먼트 매니저 선언
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private Wateringplant wateringplant;  // 식물 습도 상태 프래그먼트 선언
     private Managementbook managementbook;  // 식물 관리법 프래그먼트 선언
     private Settings settings;  // 설정 프래그먼트 선언
+    private static final String NOTIFICATION = "notification";
+    private static final String ADDPOST = "addpost";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,29 @@ public class MainActivity extends AppCompatActivity {
         setFrag();
         changeFrag(0);  // 첫 프래그먼트 화면 지정
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            final boolean fromNotification = extras.getBoolean(NOTIFICATION);
+            final boolean fromAddpost = extras.getBoolean(ADDPOST);
+            if (fromNotification) {
+                changeFrag(1);
+            }
+            else if (fromAddpost) {
+                changeFrag(2);
+            }
+        }
     }
 
     private void setFrag() {
