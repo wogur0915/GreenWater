@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="습한 식물"
+            android:text="습식 식물"
             android:fontFamily="@font/sd_misaeng"
             android:textSize="22sp"
             android:textStyle="bold" />
