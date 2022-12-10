@@ -43,6 +43,7 @@
             android:background="@drawable/round_background_bordeer_black"
             android:fontFamily="@font/sd_misaeng"
             android:hint="식물명을 입력하세요"
+            android:singleLine="true"
             android:paddingLeft="5dp"
             android:textSize="28sp"
             android:textStyle="bold" />
