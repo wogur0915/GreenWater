@@ -46,8 +46,9 @@
         android:layout_height="71dp"
         android:layout_marginStart="32dp"
         android:gravity="center"
-        android:textSize="34sp"
+        android:textSize="44sp"
         android:textStyle="bold"
+        android:fontFamily="@font/sd_misaeng"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.802"
@@ -93,7 +94,7 @@
             android:layout_marginRight="10dp"
             android:text="습한 식물"
             android:fontFamily="@font/sd_misaeng"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -104,7 +105,7 @@
             android:checked="true"
             android:text="일반"
             android:fontFamily="@font/sd_misaeng"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -114,7 +115,7 @@
             android:layout_marginRight="10dp"
             android:text="건조 식물"
             android:fontFamily="@font/sd_misaeng"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </RadioGroup>
 

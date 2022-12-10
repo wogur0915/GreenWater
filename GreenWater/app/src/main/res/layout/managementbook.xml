@@ -1,47 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/managementbook"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="15dp"
     android:orientation="vertical"
     android:padding="10dp">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/sd_misaeng"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="5dp"
+        android:text="식물 도감"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="393dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="10">
 
         <EditText
             android:id="@+id/edit"
-            android:layout_width="250dp"
+            android:layout_width="235dp"
             android:layout_height="match_parent"
-            android:hint="식물명을 입력하세요"/>
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/round_background_bordeer_black"
+            android:fontFamily="@font/sd_misaeng"
+            android:hint="식물명을 입력하세요"
+            android:paddingLeft="5dp"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/mini_button"
+            android:backgroundTint="#18A0FB"
+            android:fontFamily="@font/sd_misaeng"
+            android:onClick="mOnClick"
             android:text="검색"
-            android:textSize="16sp"
-            android:onClick="mOnClick"/>
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/edge">
+        android:layout_height="464dp"
+        android:background="@drawable/round_background_bordeer_black">
 
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            />
+            android:fontFamily="@font/sd_misaeng"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
     </ScrollView>
 </LinearLayout>
