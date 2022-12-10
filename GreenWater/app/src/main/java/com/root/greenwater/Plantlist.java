@@ -70,7 +70,7 @@ public class Plantlist extends Fragment {
 
                             String title = snapshot.child("Title").getValue(String.class);
                             String contents = snapshot.child("Inner").getValue(String.class);
-                            arrayList.add("※ "+title + "\n\n" + "  - "+ contents);
+                            arrayList.add("\n※ "+title + "\n\n" + "  - "+ contents + "\n");
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }

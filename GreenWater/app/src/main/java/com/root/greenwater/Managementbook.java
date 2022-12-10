@@ -12,9 +12,12 @@ import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.os.StrictMode;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStreamReader;
@@ -57,6 +60,9 @@ public class Managementbook extends Fragment {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // 다크모드 강제 비활성화
 
+        //키보드가 뷰를 밀어올리는 것을 방지
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         edit = (EditText) v.findViewById(R.id.edit);
         text = (TextView) v.findViewById(R.id.result);
 
@@ -67,6 +73,7 @@ public class Managementbook extends Fragment {
             public void onClick(View v)
             {
                 text.setText(""); // 이전의 결과 값을 보이지 않게 삭제
+                Toast.makeText(requireContext(),"정보를 검색중 입니다.",Toast.LENGTH_SHORT).show();
                 switch (v.getId()) {
                     case R.id.button:
 

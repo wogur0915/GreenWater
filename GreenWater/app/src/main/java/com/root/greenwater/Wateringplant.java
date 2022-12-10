@@ -2,6 +2,7 @@ package com.root.greenwater;
 
 import static java.lang.Integer.parseInt;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,17 +88,20 @@ public class Wateringplant extends Fragment {
             if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) >= 0
                     && Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) < 10) {
                 tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+                tv_status.setTextColor(Color.parseColor("#E0144C"));
                 iv_plant.setImageResource(R.drawable.crying_plant);
                 alertDelay();
             }
             else if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) > 30) {
                 count = 0;
                 tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
+                tv_status.setTextColor(Color.parseColor("#C147E9"));
                 iv_plant.setImageResource(R.drawable.toomuch_water);
             }
             else {
                 count = 0;
                 tv_status.setText("화분의 습도가 적당합니다.");
+                tv_status.setTextColor(Color.parseColor("#1dde7d"));
                 iv_plant.setImageResource(R.drawable.smile_plant);
             }
         }
@@ -106,17 +110,20 @@ public class Wateringplant extends Fragment {
             if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) >= 0
                     && Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) < 5) {
                 tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+                tv_status.setTextColor(Color.parseColor("#E0144C"));
                 iv_plant.setImageResource(R.drawable.crying_plant);
                 alertDelay();
             }
             else if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) > 25) {
                 count = 0;
                 tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
+                tv_status.setTextColor(Color.parseColor("#C147E9"));
                 iv_plant.setImageResource(R.drawable.toomuch_water);
             }
             else {
                 count = 0;
                 tv_status.setText("화분의 습도가 적당합니다.");
+                tv_status.setTextColor(Color.parseColor("#1dde7d"));
                 iv_plant.setImageResource(R.drawable.smile_plant);
             }
         }
@@ -126,17 +133,20 @@ public class Wateringplant extends Fragment {
             if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) >= 0
                     && Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) < 15) {
                 tv_status.setText("화분의 습도가 낮습니다.\n물을 주세요.");
+                tv_status.setTextColor(Color.parseColor("#E0144C"));
                 iv_plant.setImageResource(R.drawable.crying_plant);
                 alertDelay();
             }
             else if (Integer.parseInt(mtv_humid.getText().toString().replaceAll("[^\\d]", "")) > 35) {
                 count = 0;
                 tv_status.setText("화분의 습도가 너무 높습니다.\n물을 줄이세요.");
+                tv_status.setTextColor(Color.parseColor("#C147E9"));
                 iv_plant.setImageResource(R.drawable.toomuch_water);
             }
             else {
                 count = 0;
                 tv_status.setText("화분의 습도가 적당합니다.");
+                tv_status.setTextColor(Color.parseColor("#1dde7d"));
                 iv_plant.setImageResource(R.drawable.smile_plant);
             }
         }

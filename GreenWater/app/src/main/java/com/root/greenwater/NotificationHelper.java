@@ -65,6 +65,6 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.ic_baseline_wateringplant_24);
     }
 }

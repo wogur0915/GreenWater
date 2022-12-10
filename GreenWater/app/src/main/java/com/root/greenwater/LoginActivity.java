@@ -3,12 +3,18 @@ package com.root.greenwater;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +29,7 @@ public class LoginActivity extends BasicActivity {
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 실시간 데이터베이스
     private EditText mEtEmail, mEtPwd; // 로그인 입력 필드
+    private TextView tv_logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,19 @@ public class LoginActivity extends BasicActivity {
 
         mEtEmail = findViewById(R.id.et_email);
         mEtPwd = findViewById(R.id.et_pwd);
+        tv_logo = findViewById(R.id.tv_logo);
+
+        tv_logo.setText("Green Water");
+
+        TextPaint paint = tv_logo.getPaint();
+        float width = paint.measureText("Tianjin, China");
+
+        Shader textShader = new LinearGradient(0, 0, width, tv_logo.getTextSize(),
+                new int[]{
+                        Color.parseColor("#6c92f4"),
+                        Color.parseColor("#8ee91a"),
+                }, null, Shader.TileMode.CLAMP);
+        tv_logo.getPaint().setShader(textShader);
 
         Button btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {

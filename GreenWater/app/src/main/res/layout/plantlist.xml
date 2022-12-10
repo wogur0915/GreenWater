@@ -11,11 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/sd_misaeng"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
         android:text="나의 식물 일지"
-        android:textSize="40dp" />
+        android:textSize="44sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addlist_btn"
@@ -23,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="43dp"
         android:clickable="true"
@@ -37,20 +47,28 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="4dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/round_background_bordeer_black"
+        android:fontFamily="@font/sd_misaeng"
+        android:padding="1dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_album"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="19dp"
-        android:layout_marginBottom="41dp"
-        android:text="앨범" />
+        android:layout_marginBottom="49dp"
+        android:background="@drawable/mini_button"
+        android:backgroundTint="#18A0FB"
+        android:fontFamily="@font/sd_misaeng"
+        android:text="앨범"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
 
 </RelativeLayout>
